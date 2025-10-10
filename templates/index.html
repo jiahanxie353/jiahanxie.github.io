@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class = "basic_info">
-  <img src="{{ get_url(path='img/tall.jpg')}}" alt = "jiahan_photo">
+  <img src="{{ get_url(path='img/tall.jpg') }}" alt="jiahan_photo">
   <p> Jiahan Xie (谢佳函) <br>
   He/him<br>
   Engineering 2 Building 216<br>
@@ -45,10 +45,10 @@
       {% if not loop.last %}, {% else %}.{% endif %}
       {% endfor %}<br>
       {% if pub.extra.pdf != "" %}
-      [<a href={{ pub.extra.pdf }}>PDF</a>]
+      [<a href="{{ pub.extra.pdf }}">PDF</a>]
       {% endif %}
       {% if pub.extra.url != "" %}
-      [<a href={{ pub.extra.url }}>Website</a>]
+      [<a href="{{ pub.extra.url }}">Website</a>]
       {% endif %}
       </div>
     </div><br>
