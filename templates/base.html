@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  {% if page.title %}
+  <title>{{ page.title }} | Jiahan Xie</title>
+  {% else %}
+  <title>Jiahan Xie - UC Santa Cruz</title>
+  {% endif %}
+  <link rel="icon" href={{ get_url(path="img/favicon.png")}} type="image/png">
+  <link href={{ get_url(path="css/main.css")}} type= "text/css" rel = "stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1 class="name"><a class="nav-item" href="/">Jiahan Xie</a></h1>
+      <a class="nav-item" href="/#research">Research</a>
+      <a class="nav-item" href="/#teaching">Teaching</a>
+      <a class="nav-item" href="{{ get_url(path='@/posts/_index.md') }}">Posts</a>
+      <a class="nav-item" href="{{ get_url(path='@/misc/_index.md') }}">Misc</a>
+      <a class="nav-item" href="{{ get_url(path='Jiahan_Xie_CV_Current.pdf') }}">CV</a>
+    </nav>
+  </header><!--End of Header-->
+
+  <section class="section">
+    <div class="container">
+      {% block content %} {% endblock %}
+    </div>
+  </section>
+</body>
+
+<footer>
+<p>Jiahan Xie. Updated October 2025. Built using <a href="https://www.getzola.org/">Zola</a>.</p>
+</footer>
+
+</html>

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = "basic_info">
+  <img src="{{ get_url(path='img/tall.jpg')}}" alt = "jiahan_photo">
+  <p> Jiahan Xie (谢佳函) <br>
+  He/him<br>
+  Engineering 2 Building 216<br>
+  jxie84@ucsc.edu<br>
+  <a href="https://github.com/jiahanxie353">GitHub</a></p>
+  <!-- <p> <a href = "Jiahan_Xie_CV_Current.pdf"> CV </a></p> -->
+  <!-- <p> <a href = "https://twitter.com/ayaka_yourhero"> Twitter </a></p> -->
+</div> <!-- End of basic_info -->
+
+
+<!-- Bio -->
+<section>
+  <div class="bio">
+    {% set page = get_page(path="about.md") %}
+    <h2>{{ page.title }}</h2>
+    {{ page.content | safe }}
+  </div>
+</section>
+
+<section>
+  <div class="research" id="research">
+    <h2>Research</h2>
+    <h3>Publications</h3>
+    {% set pubs = get_section(path="publications/_index.md") %}
+    {% for pub in pubs.pages | sort(attribute="date") | reverse %}
+    {# Each publication item. for now I'm making things similar to before #}
+    <div>
+      <div>
+      <b>{{ pub.title }}</b>. <a href = "{{ pub.extra.publication_url }}">({{ pub.extra.publication_short }} {{ pub.date | date(format="'%y") }})</a>
+      </div>
+      <div class="pub_list">
+      {% for author in pub.extra.authors %}
+      {% if loop.last %}and {% endif %}
+      {%- if author.url != "" -%}<a href="{{ author.url }}">{%- endif -%}
+        {%- if author.name == "Jiahan Xie" -%}<b>{%- endif -%}
+        {{ author.name }}
+        {%- if author.name == "Jiahan Xie" -%}</b>{%- endif -%}
+      {%- if author.url != "" -%}</a>{%- endif -%}
+      {% if not loop.last %}, {% else %}.{% endif %}
+      {% endfor %}<br>
+      {% if pub.extra.pdf != "" %}
+      [<a href={{ pub.extra.pdf }}>PDF</a>]
+      {% endif %}
+      {% if pub.extra.url != "" %}
+      [<a href={{ pub.extra.url }}>Website</a>]
+      {% endif %}
+      </div>
+    </div><br>
+    {% endfor %}
+  </div>
+</section>
+
+
+<section>
+  <div class="internship" id="internship">
+    <h2>Internship</h2>
+    {% set internships = get_section(path="internship/_index.md") %}
+    {% for internship in internships.pages | sort(attribute="date") | reverse %}
+    <div>
+    {% if internship.extra.url %}
+    <a href="{{ internship.extra.url }}">{{ internship.title }}</a>
+    {% else %}
+    {{ internship.title }}
+    {% endif %}
+    - {{ internship.extra.position | safe }} - {{ internship.extra.period }}
+    </div><br>
+    {% endfor %}
+  </div>
+</section>
+
+<section>
+  <div class="teaching" id="teaching">
+    <h2>Teaching Experience</h2>
+    &#127942; are courses where I won an Outstanding Teaching Award!
+    {% set schools = get_section(path="teaching/_index.md") %}
+    {% for school in schools.pages | sort(attribute="date") | reverse %}
+    <h3>{{ school.title }}</h3>
+    {{ school.content | safe }}
+    {% endfor %}
+  </div>
+</section>
+
+<section>
+  <div class="posts">
+    <h2>Featured Posts</h2>
+    {% set posts = get_section(path="posts/_index.md") %}
+    {% for post in posts.pages %}
+    {%- if post.extra.featured -%}
+    <br>
+    <a href="{% if post.extra.external_url %}{{ post.extra.external_url }}{% else %}{{ post.permalink | safe }}{% endif %}">{{ post.title }}</a> [{{ post.date | date(format="%b '%y") }}]
+    <div class="indented">
+    {{ post.description }}
+    </div>
+    {%- endif -%}
+    {% endfor %}
+    <p>Check out the rest of my posts <a href="{{ get_url(path='@/posts/_index.md') }}">here</a>!</p>
+  </div>
+</section>
+
+<section>
+  <div class="misc">
+    <h2>Miscellany</h2>
+    {% set fun = get_page(path="misc/fun_facts.md") %}
+    <h3>{{ fun.title }}</h3>
+    {{ fun.content | safe }}
+    <p>Check out some of my other non-CS related posts <a href="{{ get_url(path='@/misc/_index.md') }}">here</a>!
+  </div>
+</section>
+
+{% endblock content %}
