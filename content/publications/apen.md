@@ -12,7 +12,7 @@ authors = [
 
 publication = "Applied Energy"
 publication_short = "APEN"
-publication_url = "https://www.sciencedirect.com/journal/applied-energy"
+publication_url = "https://www.sciencedirect.com/science/article/pii/S0306261923005263"
 
 pdf = "/files/publications/apen.pdf"
 url = ""
