@@ -8,7 +8,7 @@
   He/him<br>
   Engineering 2 Building 216<br>
   jxie84@ucsc.edu<br>
-  <a href="https://github.com/jiahanxie353">GitHub</a></p>
+  <a href="https://github.com/jiahanxie353">GitHub</a> | <a href="https://scholar.google.com/citations?user=Hs2OaRoAAAAJ&hl=en">Google Scholar</a></p>
   <!-- <p> <a href = "Jiahan_Xie_CV_Current.pdf"> CV </a></p> -->
   <p> <a href = "https://www.linkedin.com/in/jiahan-xie-0924b9226/"> LinkedIn </a></p>
 </div> <!-- End of basic_info -->
@@ -32,7 +32,7 @@
     {# Each publication item. for now I'm making things similar to before #}
     <div>
       <div>
-      <b>{{ pub.title }}</b>. <a href = "{{ pub.extra.publication_url }}">({{ pub.extra.publication_short }} {{ pub.date | date(format="'%y") }})</a>
+      <b>{{ pub.title }}</b>. <a href = "{{ pub.extra.publication_url }}">({{ pub.extra.publication_short }} {{ pub.date | date(format="'%y") }})</a>{% if pub.extra.publication_url_2 %} / <a href = "{{ pub.extra.publication_url_2 }}">({{ pub.extra.publication_short_2 }} {{ pub.date | date(format="'%y") }})</a>{% endif %}
       </div>
       <div class="pub_list">
       {% for author in pub.extra.authors %}
