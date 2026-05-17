@@ -4,6 +4,7 @@ date = 2026-04-07
 description = "Coding agents are excellent at tactical programming, but designing software is something else entirely."
 
 [extra]
+featured = true
 +++
 
 <p align="center"><img src="four-agents.png" alt="Are Coding Agents Great Programmers" width="75%"></p>

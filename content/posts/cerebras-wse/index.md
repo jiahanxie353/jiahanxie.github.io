@@ -4,6 +4,7 @@ date = 2026-05-16
 description = "How Cerebras scales up by making the chip the size of a wafer, and why this matters for LLM inference."
 
 [extra]
+featured = true
 +++
 
 <p align="center">
